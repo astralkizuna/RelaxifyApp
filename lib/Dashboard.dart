@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relaxify/Focus/FocusDBoard.dart';
 import 'package:relaxify/MeditationListPage.dart';
 import 'package:relaxify/profile/ProfilePage.dart';
 import 'Emoticons.dart';
@@ -247,22 +248,30 @@ class _DashboardState extends State<Dashboard>{
                               ),
                             ),
                             SizedBox(height: 16),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                width: 130,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF69817A),
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Start Focus Mode',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => FocusDashboard()),
+                                );
+                              },
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  width: 130,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF69817A),
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Start Focus Mode',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
