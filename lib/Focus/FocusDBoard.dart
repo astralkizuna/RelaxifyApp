@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../SettingsPage.dart';
+import '../profile/CustomAppBar.dart';
 import 'FocusPlayer.dart';
 
 class FocusDashboard extends StatefulWidget{
@@ -173,34 +175,59 @@ class _FocusDashboardState extends State<FocusDashboard>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: CustomAppBar(
+          title: 'Focus Mode',
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+          onSettingsButtonPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsPage()), // Navigate to the SettingsPage
+            );
+          },
+        ),
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: const Color(0XFFF8F8F8),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'What would you like to do today?',
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 24,
+                SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'What would you like \n'
+                        'to do today?',
+                    style: TextStyle(
+                        color: Color(0xFF7F9B8F),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500
+                    ),
                   ),
                 ),
 
-                SizedBox(
-                  height: 25,
+                SizedBox(height: 30),
+
+                /*
+                Container(
+                  width: 320,
+                  height: 3,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.black,
+                        width: 1.5,
+                      ),
+                    ),
+                  ),
                 ),
+                */
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-
                     GestureDetector(
                       onTap: (){
                         _changeSelect(0);
@@ -239,9 +266,7 @@ class _FocusDashboardState extends State<FocusDashboard>{
                       ),
                     ),
 
-                    SizedBox(
-                      width: 60,
-                    ),
+                    SizedBox(width: 10),
 
                     GestureDetector(
                         onTap: (){
@@ -282,17 +307,11 @@ class _FocusDashboardState extends State<FocusDashboard>{
                   ],
                 ),
 
-                SizedBox(
-                  height: 25,
-                ),
+                SizedBox(height: 25),
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-
                     GestureDetector(
                       onTap: (){
                         _changeSelect(2);
@@ -331,9 +350,7 @@ class _FocusDashboardState extends State<FocusDashboard>{
                       ),
                     ),
 
-                    SizedBox(
-                      width: 60,
-                    ),
+                    SizedBox(width: 10),
 
                     GestureDetector(
                       onTap: (){
@@ -375,16 +392,12 @@ class _FocusDashboardState extends State<FocusDashboard>{
                 ),
 
                 SizedBox(
-                  height: 60,
+                  height: 70,
                 ),
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-
                     GestureDetector(
                       onTap: (){
                         _changeTime();
@@ -404,27 +417,24 @@ class _FocusDashboardState extends State<FocusDashboard>{
                           ),
                           Container(
                             height: 40,
-                            width: 140,
+                            width: 120,
                             decoration: BoxDecoration(
                                 color: Color(0xFF7F9B8F),
-                                borderRadius: BorderRadius.circular(12)
+                                borderRadius: BorderRadius.circular(20)
                             ),
                             padding: EdgeInsets.all(12),
                             child: Text("$timer",
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
                       ),
                     ),
 
-                    SizedBox(
-                      width: 20,
-                    ),
-
-
+                    SizedBox(width: 10),
 
                     GestureDetector(
                       onTap: (){
@@ -445,16 +455,17 @@ class _FocusDashboardState extends State<FocusDashboard>{
                           ),
                           Container(
                             height: 40,
-                            width: 140,
+                            width: 120,
                             decoration: BoxDecoration(
                                 color: Color(0xFF7F9B8F),
-                                borderRadius: BorderRadius.circular(12)
+                                borderRadius: BorderRadius.circular(20)
                             ),
                             padding: EdgeInsets.all(12),
                             child: Text("$interval",
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -463,14 +474,11 @@ class _FocusDashboardState extends State<FocusDashboard>{
                   ],
                 ),
 
-                SizedBox(
-                  height: 25,
-                ),
+                SizedBox(height: 25),
 
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(width: 31),
-
                     GestureDetector(
                       onTap: (){
                         var h = duration[0];
@@ -487,13 +495,14 @@ class _FocusDashboardState extends State<FocusDashboard>{
                         width: 300,
                         decoration: BoxDecoration(
                             color: Color(0xFF7F9B8F),
-                            borderRadius: BorderRadius.circular(12)
+                            borderRadius: BorderRadius.circular(20)
                         ),
                         padding: EdgeInsets.all(12),
                         child: Text("Start",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              color: Colors.white),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),

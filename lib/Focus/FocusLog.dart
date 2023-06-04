@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../Dashboard.dart';
+import '../SettingsPage.dart';
+import '../profile/CustomAppBar.dart';
 import 'FocusDBoard.dart';
 
 class focusLogPage extends StatefulWidget {
@@ -14,8 +16,20 @@ class _focusLogPageState extends State<focusLogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: CustomAppBar(
+          title: 'Focus Mode',
+          onBackButtonPressed: () {
+            Navigator.pop(context);
+          },
+          onSettingsButtonPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsPage()), // Navigate to the SettingsPage
+            );
+          },
+        ),
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: const Color(0XFFF8F8F8),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(35.0),
@@ -444,7 +458,7 @@ class _focusLogPageState extends State<focusLogPage> {
                     )
                 ),
 
-                SizedBox(height: 45),
+                SizedBox(height: 100),
 
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -462,13 +476,14 @@ class _focusLogPageState extends State<focusLogPage> {
                         width: 130,
                         decoration: BoxDecoration(
                             color: Color(0xFF7F9B8F),
-                            borderRadius: BorderRadius.circular(12)
+                            borderRadius: BorderRadius.circular(20)
                         ),
                         padding: EdgeInsets.all(12),
                         child: Text("Restart",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              color: Colors.white),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -487,13 +502,14 @@ class _focusLogPageState extends State<focusLogPage> {
                         width: 130,
                         decoration: BoxDecoration(
                             color: Color(0xFF7F9B8F),
-                            borderRadius: BorderRadius.circular(12)
+                            borderRadius: BorderRadius.circular(20)
                         ),
                         padding: EdgeInsets.all(12),
                         child: Text("Home",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              color: Colors.white),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
